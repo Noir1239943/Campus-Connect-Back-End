@@ -2,7 +2,7 @@
 
 Laravel API backend for CampusConnect, a campus service-request tracker (transcripts, certificates, facility bookings, etc.). Served over [Laravel Octane](https://laravel.com/docs/octane) (RoadRunner) with a bearer-token API (Sanctum) consumed by a separate React frontend.
 
-The frontend lives in its own repository: [Campus-Connect-Front-End](https://github.com/Noir1239943/Noir1239943-Campus-Connect-Front-End).
+The frontend lives in its own repository: [Campus-Connect-Front-End](https://github.com/Noir1239943/Campus-Connect-Front-End).
 
 ## Prerequisites
 
@@ -66,10 +66,10 @@ composer run dev
 
 This runs on `http://localhost:8000`. Leave it running in its own terminal.
 
-**Then, in a separate terminal, start the frontend** (clone the [frontend repo](https://github.com/Noir1239943/Noir1239943-Campus-Connect-Front-End) alongside this one if you haven't already):
+**Then, in a separate terminal, start the frontend** (clone the [frontend repo](https://github.com/Noir1239943/Campus-Connect-Front-End) alongside this one if you haven't already):
 
 ```bash
-cd ../Noir1239943-Campus-Connect-Front-End
+cd ../Campus-Connect-Front-End
 npm install    # first time only
 npm run dev
 ```
