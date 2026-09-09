@@ -26,7 +26,16 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => \App\Http\Middleware\EnsureUserHasRole::class,
         ]);
+
+        // This is a pure JSON API with no 'login' named route, so an unauthenticated
+        // request that doesn't send Accept: application/json (a browser hitting an
+        // api/* URL directly, a health check, curl without headers, ...) would
+        // otherwise hit Laravel's default "redirect to login" handling, which
+        // throws RouteNotFoundException instead of returning 401. Never redirect.
+        $middleware->redirectGuestsTo(fn () => null);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->shouldRenderJsonWhen(function ($request, $throwable) {
+            return $request->is('api/*') || $request->expectsJson();
+        });
     })->create();
